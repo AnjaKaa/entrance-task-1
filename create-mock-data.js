@@ -79,6 +79,7 @@ function createData () {
     ]))
     .then(function ([users, rooms, events]) {
       let promises = [];
+      
       promises.push(events[0].setRoom(rooms[0]));
       promises.push(events[1].setRoom(rooms[1]));
       promises.push(events[2].setRoom(rooms[2]));

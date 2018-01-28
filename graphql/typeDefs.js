@@ -11,11 +11,7 @@ type User {
 input UserInput {
     login: String!
     homeFloor: Int
-}
-
-type UserRoom {
-    id: ID!
-    title: String!
+    avatarUrl: String!
 }
 
 type Room {
@@ -36,14 +32,16 @@ type Event {
     title: String!
     dateStart: Date!
     dateEnd: Date!
-    users: [User]
+    Users: [User]
     room: Room
 }
 
 input EventInput {
     title: String!
     dateStart: Date!
-    dateEnd: Date!
+    dateEnd: Date! 
+    users: [UserInput]
+    room: RoomInput
 }
 
 type Query {

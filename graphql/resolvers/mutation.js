@@ -8,9 +8,7 @@ module.exports = {
 
   updateUser (root, { id, input }, context) {
     return models.User.findById(id)
-            .then(user => {
-              return user.update(input);
-            });
+            .then(user =>  user.update(input));
   },
 
   removeUser (root, { id }, context) {
@@ -25,9 +23,7 @@ module.exports = {
 
   updateRoom (root, { id, input }, context) {
     return models.Room.findById(id)
-            .then(room => {
-              return room.update(input);
-            });
+            .then(room => room.update(input));
   },
 
   removeRoom (root, { id }, context) {
@@ -53,6 +49,14 @@ module.exports = {
             });
   },
 
+  addUserToEvent (root,{id,userId}, context) {
+    return models.Event.findById(id)
+            .then(event => {
+              event.addUser(userId);
+              return event;
+            });
+  },
+
   removeUserFromEvent (root, { id, userId }, context) {
     return models.Event.findById(id)
             .then(event => {
@@ -65,6 +69,7 @@ module.exports = {
     return models.Event.findById(id)
             .then(event => {
               event.setRoom(id);
+              return event;
             });
   },
 
